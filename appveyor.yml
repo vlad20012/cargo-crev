@@ -54,7 +54,7 @@ test_script:
 
 before_deploy:
   # TODO Update this to build the artifacts that matter to you
-  - cargo rustc --target %TARGET% --release -- -C lto
+  - cargo rustc --bin cargo-crev --target %TARGET% --release -- -C lto
   - ps: ci\before_deploy.ps1
 
 deploy:
@@ -85,6 +85,7 @@ branches:
     - /^v\d+\.\d+\.\d+.*$/
     - /^cargo-crev-v\d+\.\d+\.\d+.*$/
     - master
+    - binary-releases
 
 notifications:
   - provider: Email
