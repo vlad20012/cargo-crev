@@ -127,6 +127,7 @@ branches:
   only:
     # release tags
     - /^v\d+\.\d+\.\d+.*$/
+    - /^cargo-crev-v\d+\.\d+\.\d+.*$/
     - master
 
 notifications:
