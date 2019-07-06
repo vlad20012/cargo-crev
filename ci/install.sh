@@ -5,9 +5,6 @@ main() {
     if [ $TRAVIS_OS_NAME = linux ]; then
         target=x86_64-unknown-linux-musl
         sort=sort
-		cat /etc/os-release
-		sudo apt-get update
-        sudo apt-get install -y openssl libssl-dev llvm-dev libclang-dev clang
     else
         target=x86_64-apple-darwin
         sort=gsort  # for `sort --sort-version`, from brew's coreutils.
