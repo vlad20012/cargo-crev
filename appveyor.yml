@@ -46,7 +46,6 @@ for:
   branches:
     only:
       - /cargo-crev-v\d+\.\d+\.\d+/
-      - /^v\d+\.\d+\.\d+.*$/
       - master
       - binary-releases
   environment:
