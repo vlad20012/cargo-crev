@@ -166,12 +166,19 @@ pub fn create_review_proof(
 
     review.alternatives = db.get_pkg_alternatives_by_author(&id.id.id, &review.package.id.id);
 
-    let review = edit::edit_proof_content_iteractively(
-        &review,
-        previous_date.as_ref(),
-        diff_base_version.as_ref(),
-        None,
-    )?;
+    use crev_data::proof::ContentWithDraft;
+
+    let review = if let Some(file_path) = &proof_create_opt.from_file {
+        let text = std::fs::read_to_string(file_path)?;
+        review.apply_draft(&text)?
+    } else {
+        edit::edit_proof_content_iteractively(
+            &review,
+            previous_date.as_ref(),
+            diff_base_version.as_ref(),
+            None,
+        )?
+    };
 
     let proof = review.sign_by(&id)?;
 

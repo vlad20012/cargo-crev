@@ -546,6 +546,10 @@ pub struct CommonProofCreate {
     /// Don't store the proof
     #[structopt(long = "no-store")]
     pub no_store: bool,
+
+    /// file url
+    #[structopt(long = "from-file")]
+    pub from_file: Option<String>,
 }
 
 #[derive(Debug, StructOpt, Clone)]
